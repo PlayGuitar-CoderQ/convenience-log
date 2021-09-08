@@ -1,70 +1,44 @@
-# convenience-log README
+<div align="center"> <img alt="CoderQ" width="200" height="200" src="https://static01.imgkr.com/temp/3cdc9b02c9c045aaa77fd9ed49078a0a.png"><br> <br>
 
-This is the README for your extension "convenience-log". After writing up a brief description, we recommend including the following sections.
+[![license](https://img.shields.io/badge/TypeScript-4.3.2-blue?logo=TypeScript)](LICENSE)
 
-## Features
+<h1>convenience-log</h1>
+</div>
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 🦹‍♂️ 开发目的
 
-For example if there is an image subfolder under your extension project workspace:
+主要解决本人平时训练算法或者设计模式等其他练习的时候需要编写大量打印所导致的繁琐操作，特此开发这个插件。
 
-\!\[feature X\]\(images/feature-x.png\)
+## 🌟 用途
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- 主要解决平常打印时候的繁琐操作，不用动手赋值要打印的值，不用刻意选取值，只需使用快捷键可打印想要的参数
 
-## Requirements
+## 🕹 使用
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+<img src="use.gif"/>
 
-## Extension Settings
+##  开发中学到：
+ - vscode.DocumentFilter: 文档选择器类型 用于缩小文件范围
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+ - vscode.window.activeTextEditor: 获取当前活动的编辑器页面
+ api地址： https://code.visualstudio.com/api/references/vscode-api#TextEditor
 
-For example:
+ - vscode.window.activeTextEditor.document:  代表一个文本文件，如一个源文件。文本文件有行和关于底层资源的知识，如文件。
+ api地址： https://code.visualstudio.com/api/references/vscode-api#TextDocument
 
-This extension contributes the following settings:
+ - vscode.window.activeTextEditor.Selection: 代表一个编辑器中的文本选择。
+api地址： https://code.visualstudio.com/api/references/vscode-api#Selection
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+- vscode.window.activeTextEditor.document.getWordRangeAtPosition: 获取给定位置的单词内容，第一个参数可使用自定义正则表达式去除空
+api地址： https://code.visualstudio.com/api/references/vscode-api#TextDocument  (在下面的getWordRangeAtPosition)
 
-## Known Issues
+-  vscode.window.activeTextEditor.document.getWordRangeAtPosition.getText: 获取该范围的文本
+api地址： https://code.visualstudio.com/api/references/vscode-api#TextDocument  (在下面的geText)
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- vscode.window.activeTextEditor.edit: 编辑当前页 （函数）
+api地址： https://code.visualstudio.com/api/references/vscode-api#TextEditor (在下面的edit)
+回调：(editBuilder: TextEditorEdit) => void 提供增删改查的方法 
+api地址： https://code.visualstudio.com/api/references/vscode-api#TextEditorEdit (寻找Methods)
 
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- vscode.window.activeTextEditor.document.lineAt: 获取行
+api地址：https://code.visualstudio.com/api/references/vscode-api#TextDocument (寻找lineAt)
