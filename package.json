@@ -1,8 +1,8 @@
 {
   "name": "convenience-log",
 	"displayName": "Convenience Log",
-	"description": "",
-	"version": "0.0.1",
+	"description": "自研Vscode插件，主要用于在编写代码的时候方便打印当前的value，而减少一些鼠标操作或者，使用log生成的console.log(),还要人为填写value",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.59.0"
 	},
@@ -10,19 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:convenience-log.helloWorld",
-				"onCommand:convernience-log.openDate"
+		"*"
 	],
+	"repository": "https://github.com/PlayGuitar-CoderQ/convenience-log",
 	"main": "./out/extension.js",
+	"icon": "icon.png",
 	"contributes": {
-		"commands": [
+		"keybindings": [
 			{
-				"command": "convenience-log.helloWorld",
-				"title": "Hello World"
-			},
-			{
-				"command": "convernience-log.openDate",
-				"title": "Open Date"
+				"command": "extension.logval",
+				"key": "ctrl+p",
+				"mac": "cmd+p",
+				"when": "editorTextFocus"
 			}
 		]
 	},

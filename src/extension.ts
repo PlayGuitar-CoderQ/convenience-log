@@ -1,29 +1,38 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+// 导入vscode，vscode有拓展api
 import * as vscode from 'vscode';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-// 插件激活立即执行当前文件
-export function activate(context: vscode.ExtensionContext) {
+// 过滤触发的文档类型
+const documentFilter: vscode.DocumentFilter[] = [
+	{ language: 'javascript', scheme: 'file' },
+	{ language: 'typescript', scheme: 'file' },
+	{ language: 'vue', scheme: 'file' },
+	{ language: 'typescriptreact', scheme: 'file' },
+	{ language: 'javascriptreact', scheme: 'file' },
+]
+
+// 插入Log
+function insertLog() {
+	const activeEditor = vscode.window.activeTextEditor;
+	const document = activeEditor.document;
+	let selection: (vscode.Selection | vscode.Range) = activeEditor.selection;
+	if (selection.isEmpty) selection = document.getWordRangeAtPosition(selection.end) || selection
+	const selectedText = document.getText(selection)
 	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "convenience-log" is now active!');
+	const thisLine = document.lineAt(selection.end.line)
+	const endOfThisLine = new vscode.Position(selection.end.line, thisLine.range.end.character)
+	const startOfThisLine = new vscode.Position(selection.start.line, thisLine.range.start.character)
+	const deleteRange = new vscode.Range(startOfThisLine, endOfThisLine);
+	let insertText = `console.log('${selectedText}', ${selectedText});`;
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('convernience-log.openDate', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		console.log(new Date().getTime());
-		
-		vscode.window.showInformationMessage("当前时间");
-	});
-
-	context.subscriptions.push(disposable);
+	activeEditor.edit(cto => cto.insert(endOfThisLine, insertText)).then(() => {
+		activeEditor.edit(cto => cto.delete(deleteRange))
+		vscode.window.showInformationMessage("✅ 植入成功")
+	})
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+// 插件激活立即执行当前文件
+export function activate(ctx: vscode.ExtensionContext): void {
+	const commands = vscode.commands.registerCommand('extension.logval', () => insertLog())
+	ctx.subscriptions.push(commands)
+}
+
