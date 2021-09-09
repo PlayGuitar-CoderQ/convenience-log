@@ -1,4 +1,4 @@
-<div align="center"> <img alt="CoderQ" width="200" height="200" src="https://i.loli.net/2021/09/09/wUmJCMXIDdZPGok.png"><br> <br>
+<div align="center"> <img alt="CoderQ" width="200" height="200" src="https://cdn.jsdelivr.net/gh/PlayGuitar-CoderQ-Sub/img_bed@master/20210909/icon_readme.4vb2e2folnk0.png"><br> <br>
 
 
 [![license](https://img.shields.io/badge/TypeScript-4.3.2-blue?logo=TypeScript)](LICENSE)
