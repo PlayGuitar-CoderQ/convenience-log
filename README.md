@@ -1,4 +1,5 @@
-<div align="center"> <img alt="CoderQ" width="200" height="200" src="https://static01.imgkr.com/temp/3cdc9b02c9c045aaa77fd9ed49078a0a.png"><br> <br>
+<div align="center"> <img alt="CoderQ" width="200" height="200" src="https://i.loli.net/2021/09/09/wUmJCMXIDdZPGok.png"><br> <br>
+
 
 [![license](https://img.shields.io/badge/TypeScript-4.3.2-blue?logo=TypeScript)](LICENSE)
 
